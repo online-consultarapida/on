@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Nautica - Especialistas em Embarcações | Foz do Iguaçu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #1E3A8A; /* Azul marinho - oceano */
+            --secondary-color: #00B4D8; /* Azul água - claridade */
+            --accent-color: #FACC15; /* Amarelo - sol, verão */
+            --light-color: #E0F2FE; /* Azul muito claro */
+            --dark-color: #0C4A6E; /* Azul escuro - profundidade */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            background-color: #ffffff;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .bg-primary-custom {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .text-primary-custom {
+            color: var(--primary-color) !important;
+        }
+        
+        .bg-secondary-custom {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #1c2f75;
+            border-color: #1c2f75;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+        }
+        
+        .btn-secondary-custom {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary-custom:hover {
+            background-color: #0099c1;
+            border-color: #0099c1;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.2);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(0, 180, 216, 0.4) 100%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-card {
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            background-color: white;
+            border-top: 5px solid var(--accent-color);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .highlight-box {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 2px solid #f0f0f0;
+        }
+        
+        .highlight-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-color: var(--secondary-color);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+            font-weight: 800;
+            color: var(--dark-color);
+            text-transform: uppercase;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-title.center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .stats-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        
+        .stats-label {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .stats-box {
+            text-align: center;
+            padding: 25px 15px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-box:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-5px);
+        }
+        
+        .call-to-action {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1c2f75 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .call-to-action:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+        }
+        
+        .call-to-action:after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(250, 204, 21, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .product-category {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 320px;
+            margin-bottom: 30px;
+        }
+        
+        .product-category img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-category:hover img {
+            transform: scale(1.1);
+        }
+        
+        .product-category .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(12, 74, 110, 0.9));
+            color: white;
+            padding: 25px;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding-top: 60px;
+        }
+        
+        .contact-info li {
+            margin-bottom: 12px;
+        }
+        
+        .contact-info i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .floating-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+        
+        .floating-button.whatsapp {
+            background-color: #25D366;
+        }
+        
+        .floating-button.phone {
+            background-color: var(--primary-color);
+        }
+        
+        .badge-promo {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+        
+        .nautical-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(30, 58, 138, 0.1);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .services-banner {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(0, 180, 216, 0.9)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            border-radius: 12px;
+            margin: 60px 0;
+        }
+        
+        .brands-section {
+            background-color: var(--light-color);
+            padding: 60px 0;
+            border-radius: 12px;
+        }
+        
+        .brand-logo {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .promo-banner {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .promo-banner h3 {
+            margin-bottom: 10px;
+        }
+        
+        .water-animation {
+            position: relative;
+            height: 120px;
+            overflow: hidden;
+            margin: 30px 0;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--light-color));
+        }
+        
+        .water-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"/></svg>');
+            background-size: 600px 100px;
+            animation: wave 10s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-600px); }
+        }
+        
+        .boat-animation {
+            position: absolute;
+            bottom: 30px;
+            left: 10%;
+            font-size: 2.5rem;
+            color: white;
+            animation: boat 15s linear infinite;
+            z-index: 10;
+        }
+        
+        @keyframes boat {
+            0% { left: -50px; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/5545999999999?text=Olá%20Sport%20Nautica!%20Gostaria%20de%20informações%20sobre%20embarcações." target="_blank" class="floating-button whatsapp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="tel:+554533333333" class="floating-button phone">
+            <i class="bi bi-telephone"></i>
+        </a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-custom fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-water me-2"></i>SPORT NAUTICA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#embarcacoes">Embarcações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#acessorios">Acessórios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+                <a href="#embarcacoes" class="btn btn-secondary-custom ms-lg-4 mt-3 mt-lg-0">
+                    <i class="bi bi-binoculars me-2"></i>Ver Embarcações
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section mt-5">
+        <div class="container">
+            <div class="row align-items-center hero-content">
+                <div class="col-lg-7">
+                    <h1 class="hero-title">LIBERDADE NAS <span class="text-warning">ÁGUAS</span></h1>
+                    <p class="lead mb-4">Desde 2014, somos especialistas em embarcações e veículos recreativos em Foz do Iguaçu. Qualidade, segurança e paixão pelo mundo náutico.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#embarcacoes" class="btn btn-secondary-custom btn-lg">Ver Embarcações <i class="bi bi-arrow-right ms-1"></i></a>
+                        <a href="#servicos" class="btn btn-outline-light btn-lg">Nossos Serviços <i class="bi bi-tools ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="highlight-box position-relative">
+                        <div class="badge-promo">OFERTA ESPECIAL</div>
+                        <h4 class="mb-3">Kit Iniciante Náutico</h4>
+                        <p class="mb-3">Lancha + Trailier + Coletes Salva-Vidas por apenas:</p>
+                        <h3 class="text-primary-custom">R$ 89.990,00</h3>
+                        <p class="text-muted small"><s>R$ 109.990,00</s> (18% OFF)</p>
+                        <a href="#contato" class="btn btn-primary-custom w-100">Aproveitar Oferta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animação de Água -->
+    <div class="water-animation">
+        <div class="water-wave"></div>
+        <div class="boat-animation">
+            <i class="bi bi-ship"></i>
+        </div>
+    </div>
+
+    <!-- Sobre a Empresa -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title center">Sobre a Sport Nautica</h2>
+                    <p class="lead">Especializada em comércio de embarcações e veículos recreativos desde 2014, promovendo aventura e lazer nas águas de Foz do Iguaçu e região.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="info-card">
+                        <div class="nautical-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h4>Nossa História</h4>
+                        <p>A <strong>Sport Nautica LTDA</strong> foi fundada em <strong>26 de novembro de 2014</strong> na cidade de <strong>Foz do Iguaçu, Paraná</strong>. Começamos com a missão de fornecer embarcações de qualidade para lazer e esporte, aproveitando as belas águas da região.</p>
+                        <a href="#contato" class="btn btn-primary-custom mt-2">Visite Nossa Loja</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="info-card">
+                        <div class="nautical-icon">
+                            <i class="bi bi-file-text"></i>
+                        </div>
+                        <h4>Dados Cadastrais</h4>
+                        <p><strong>CNPJ:</strong> 21.559.864/0001-18</p>
+                        <p><strong>Razão Social:</strong> Sport Nautica LTDA</p>
+                        <p><strong>Situação Cadastral:</strong> <span class="badge bg-success">Ativa</span></p>
+                        <p><strong>Atividade Principal:</strong> 47.63-6-05 - Comércio varejista de embarcações e outros veículos recreativos; peças e acessórios.</p>
+                        <a href="#contato" class="btn btn-secondary-custom mt-2">Certificados</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Estatísticas -->
+            <div class="row mt-5">
+                <div class="col-12 text-center mb-5">
+                    <h3>Nossa Trajetória em Números</h3>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <div class="stats-number">8+</div>
+                        <div class="stats-label">Anos no Mercado</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <div class="stats-number">200+</div>
+                        <div class="stats-label">Embarcações Vendidas</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <div class="stats-number">500+</div>
+                        <div class="stats-label">Clientes Satisfeitos</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <div class="stats-number">97%</div>
+                        <div class="stats-label">Satisfação do Cliente</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner de Promoção -->
+    <div class="container">
+        <div class="promo-banner">
+            <h3><i class="bi bi-megaphone me-2"></i>PROMOÇÃO DE VERÃO 2023!</h3>
+            <p class="mb-0">Até 20% de desconto em jet skis e 15% em acessórios náuticos. Aproveite a temporada com condições especiais!</p>
+            <a href="#contato" class="btn btn-primary-custom mt-3">Saiba Mais</a>
+        </div>
+    </div>
+
+    <!-- Embarcações -->
+    <section id="embarcacoes" class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title center">Nossas Embarcações</h2>
+                    <p class="lead">Temos o modelo perfeito para cada tipo de aventura aquática.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="highlight-box text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-ship"></i>
+                        </div>
+                        <h4>Lanchas</h4>
+                        <p>Para passeios em família, pesca esportiva ou pura diversão na água. Modelos de 4 a 8 metros.</p>
+                        <a href="#contato" class="btn btn-primary-custom mt-3">Ver Modelos</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight-box text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+                        <h4>Jet Skis</h4>
+                        <p>Emoção e velocidade sobre as águas. Perfeitos para aventuras radicais e momentos de pura adrenalina.</p>
+                        <a href="#contato" class="btn btn-primary-custom mt-3">Ver Modelos</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight-box text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-water"></i>
+                        </div>
+                        <h4>Barcos a Remo/Vela</h4>
+                        <p>Para quem busca contato direto com a natureza e atividades náuticas mais tranquilas.</p>
+                        <a href="#contato" class="btn btn-primary-custom mt-3">Ver Modelos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <p class="lead mb-4">Também temos barcos infláveis, caiaques, stand up paddles e muito mais!</p>
+                    <a href="#contato" class="btn btn-secondary-custom btn-lg">Solicitar Catálogo Completo <i class="bi bi-whatsapp ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acessórios -->
+    <section id="acessorios" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title center">Acessórios Náuticos</h2>
+                    <p class="lead">Tudo o que você precisa para sua embarcação e para navegar com segurança e conforto.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="product-category">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Coletes Salva-Vidas">
+                        <div class="overlay">
+                            <h3 class="mb-2">Segurança</h3>
+                            <p class="mb-0">Coletes, bóias, extintores e sinalização</p>
+                            <a href="#" class="btn btn-sm btn-secondary-custom mt-3">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-category">
+                        <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Peças e Motores">
+                        <div class="overlay">
+                            <h3 class="mb-2">Peças e Motores</h3>
+                            <p class="mb-0">Motores, hélices, bombas e reparos</p>
+                            <a href="#" class="btn btn-sm btn-secondary-custom mt-3">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-category">
+                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Navegação">
+                        <div class="overlay">
+                            <h3 class="mb-2">Navegação</h3>
+                            <p class="mb-0">GPS, rádios, sonares e instrumentos</p>
+                            <a href="#" class="btn btn-sm btn-secondary-custom mt-3">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-category">
+                        <img src="https://images.unsplash.com/photo-1593693399741-6f4e6d6cde6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ancoragem">
+                        <div class="overlay">
+                            <h3 class="mb-2">Ancoragem</h3>
+                            <p class="mb-0">Âncoras, cabos, amarrações e bóias</p>
+                            <a href="#" class="btn btn-sm btn-secondary-custom mt-3">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-category">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Conforto">
+                        <div class="overlay">
+                            <h3 class="mb-2">Conforto a Bordo</h3>
+                            <p class="mb-0">Toldos, cadeiras, mesas e utensílios</p>
+                            <a href="#" class="btn btn-sm btn-secondary-custom mt-3">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-category">
+                        <img src="https://images.unsplash.com/photo-1590552514565-0b8e7e7e5b16?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Manutenção">
+                        <div class="overlay">
+                            <h3 class="mb-2">Manutenção</h3>
+                            <p class="mb-0">Produtos de limpeza, tintas e ferramentas</p>
+                            <a href="#" class="btn btn-sm btn-secondary-custom mt-3">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a href="#contato" class="btn btn-primary-custom btn-lg">Ver Todos os Acessórios <i class="bi bi-arrow-right-circle ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title center">Nossos Serviços</h2>
+                    <p class="lead">Além de vender, cuidamos da sua embarcação com manutenção especializada.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center p-4">
+                        <div class="nautical-icon mx-auto">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h5>Manutenção Náutica</h5>
+                        <p>Revisão completa, reparos, pintura, troca de peças e regulagem de motores.</p>
+                        <a href="#contato" class="btn btn-sm btn-outline-primary-custom">Agendar Serviço</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center p-4">
+                        <div class="nautical-icon mx-auto">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h5>Transporte e Guincho</h5>
+                        <p>Transporte seguro de embarcações em trailer especializado para todo Paraná.</p>
+                        <a href="#contato" class="btn btn-sm btn-outline-primary-custom">Consultar Valores</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center p-4">
+                        <div class="nautical-icon mx-auto">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <h5>Documentação</
